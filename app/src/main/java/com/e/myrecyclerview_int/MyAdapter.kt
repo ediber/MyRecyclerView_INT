@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+// adapter get a lambda expression in the constructor
+class MyAdapter (val lambda: (String) -> Int  /*, val tmp: Double*/): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
 
    // val countries = listOf<String>()
@@ -37,6 +38,10 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
         val cityView = holder.city
         cityView.text = city
+
+        holder.parent.setOnClickListener(View.OnClickListener {
+            lambda(country)
+        })
     }
 
     // total items we want to show
@@ -56,5 +61,10 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val country: TextView = itemView.findViewById(R.id.row_country)
         val city: TextView = itemView.findViewById(R.id.row_city)
+
+        // adding in order to add to it click event
+        val parent: View = itemView.findViewById(R.id.row_parent)
     }
+
+
 }
