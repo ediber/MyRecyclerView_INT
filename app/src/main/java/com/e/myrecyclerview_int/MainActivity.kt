@@ -41,6 +41,9 @@ class MainActivity() : AppCompatActivity() {
             adapter0.add(county, city)
         })
 
+
+        var b: Boolean = false
+        b = true
     }
 }
 

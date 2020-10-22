@@ -1,5 +1,6 @@
 package com.e.myrecyclerview_int
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ class MyAdapter (val lambda: (String) -> Int  /*, val tmp: Double*/): RecyclerVi
     // mutableListOf can be changed, ListOf can not be changed
     val countries = mutableListOf("Israel", "USA", "England")
     val cities = mutableListOf("Jerusalem", "Washington", "London")
-
+    val flags = mutableListOf(false, false, false)
 
     // creating viewHolder
     // creating UI structure for the data, for a single row
@@ -41,7 +42,29 @@ class MyAdapter (val lambda: (String) -> Int  /*, val tmp: Double*/): RecyclerVi
 
         holder.parent.setOnClickListener(View.OnClickListener {
             lambda(country)
+
+            // cahange the flag status, on click event
+            if(flags[position] == false){
+                flags[position] = true
+            } else { // was true
+                flags[position] = false
+            }
+
+            // refresh the adapter
+            notifyDataSetChanged()
         })
+
+        holder.city.setOnClickListener(View.OnClickListener {
+            lambda(city + " " +position)
+        })
+
+        // update ui according to flags
+        if(flags[position] == true){
+            // paint row in yellow
+            holder.parent.setBackgroundColor(Color.YELLOW)
+        } else { // flag is false
+            holder.parent.setBackgroundColor(0)
+        }
     }
 
     // total items we want to show
