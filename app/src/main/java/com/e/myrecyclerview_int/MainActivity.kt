@@ -43,3 +43,8 @@ class MainActivity() : AppCompatActivity() {
 
     }
 }
+
+
+//
+//task
+        // print Log on a click on a city, with the city name
