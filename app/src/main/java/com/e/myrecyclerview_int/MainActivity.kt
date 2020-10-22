@@ -2,6 +2,8 @@ package com.e.myrecyclerview_int
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -19,5 +21,18 @@ class MainActivity : AppCompatActivity() {
 
         recycler.adapter = adapter0
         recycler.layoutManager = LinearLayoutManager(application)
+
+
+        val countryEdit = findViewById<EditText>(R.id.editTextCountry)
+        val cityEdit = findViewById<EditText>(R.id.editTextCity)
+        val buttonAdd = findViewById<View>(R.id.button_add)
+
+        buttonAdd.setOnClickListener(View.OnClickListener {
+            val county = countryEdit.text.toString()
+            val city = cityEdit.text.toString()
+
+            adapter0.add(county, city)
+        })
+
     }
 }

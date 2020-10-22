@@ -10,7 +10,9 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
 
    // val countries = listOf<String>()
-    val countries = listOf("Israel", "USA", "England")
+    // mutableListOf can be changed, ListOf can not be changed
+    val countries = mutableListOf("Israel", "USA", "England")
+    val cities = mutableListOf("Jerusalem", "Washington", "London")
 
 
     // creating viewHolder
@@ -29,8 +31,12 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     // position - the position of the row to show to the user
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val country = countries[position]
+        val city = cities[position]
 
-        holder.name.text = country
+        holder.country.text = country
+
+        val cityView = holder.city
+        cityView.text = city
     }
 
     // total items we want to show
@@ -38,8 +44,17 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>() {
         return countries.size
     }
 
+    fun add(county: String, city: String) {
+        countries.add(county)
+        cities.add(city)
+
+        // refresh the adapter
+        notifyDataSetChanged()
+    }
+
     // itemView is the graphic parent of the row
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val name: TextView = itemView.findViewById(R.id.row_name)
+        val country: TextView = itemView.findViewById(R.id.row_country)
+        val city: TextView = itemView.findViewById(R.id.row_city)
     }
 }
