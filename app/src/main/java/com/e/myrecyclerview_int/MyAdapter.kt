@@ -65,7 +65,7 @@ class MyAdapter (val lambda: (String) -> Int  /*, val tmp: Double*/): RecyclerVi
         } else { // flag is false
             // remove yellow color
             holder.parent.setBackgroundColor(0)
-        }
+        }//
     }
 
     // total items we want to show
