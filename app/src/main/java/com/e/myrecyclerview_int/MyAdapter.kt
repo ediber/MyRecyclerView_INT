@@ -63,6 +63,7 @@ class MyAdapter (val lambda: (String) -> Int  /*, val tmp: Double*/): RecyclerVi
             // paint row in yellow
             holder.parent.setBackgroundColor(Color.YELLOW)
         } else { // flag is false
+            // remove yellow color
             holder.parent.setBackgroundColor(0)
         }
     }
