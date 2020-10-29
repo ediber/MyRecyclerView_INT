@@ -76,6 +76,7 @@ class MyAdapter (val lambda: (String) -> Int  /*, val tmp: Double*/): RecyclerVi
     fun add(county: String, city: String) {
         countries.add(county)
         cities.add(city)
+        flags.add(false)
 
         // refresh the adapter
         notifyDataSetChanged()
